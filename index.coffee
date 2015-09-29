@@ -155,14 +155,14 @@ template = handlebars.compile(fs.readFileSync("#{data.meta.sourceContent}", "utf
 fs.writeFileSync(data.meta.content, template(data), "utf8")
 
 wkhtmltopdf("file:///#{data.meta.content}", { 
-  output: "file:///#{data.meta.print}",
+  output: "#{data.meta.print}",
   headerHtml: "file:///#{data.meta.header}",
   footerHtml: "file:///#{data.meta.footer}",
   marginLeft: "0mm",
   marginRight: "0mm",
 }, (err) ->
   if err
-    console.error("Error creating #{outFilename}")
+    console.error("Error creating #{data.meta.print}")
     console.error(err)
   else
     console.log("Created #{outFilename}")
