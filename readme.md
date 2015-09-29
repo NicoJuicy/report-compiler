@@ -1,18 +1,18 @@
-# invoice-compiler
-Generate invoices from YAML files using [wkhtmltopdf](http://wkhtmltopdf.org/).
+# report-compiler
+Generate reports from YAML files using [wkhtmltopdf](http://wkhtmltopdf.org/).
 
 ## Install
 ```bash
-npm install -g invoice-compiler
+npm install -g report-compiler
 ```
 
 ## Usage
 ```bash
-invoice invoice.yml
+report invoice.yml
 # Outputs invoice.pdf
 ```
 
-See `samples` directory for [an annotated sample](https://github.com/scalableminds/invoice-compiler/blob/master/samples/42.yml).
+See `samples` directory for [an annotated sample](https://github.com/NicoJuicy/report-compiler/tree/master/samples42.yml).
 
 
 ## Dependencies

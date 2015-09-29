@@ -1,0 +1,12 @@
+{
+  "Invoice": "Facture",
+  "Item": "Produit",
+  "Qty.": "Quantité",
+  "Description": "Déscription",
+  "Unit Price": "Prix",
+  "VAT": "Taxe",
+  "Net": "Net",
+  "Contact": "Contact",
+  "Subtotal": "Net",
+  "Total": "Totale"
+}

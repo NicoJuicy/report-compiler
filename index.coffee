@@ -46,20 +46,20 @@ setLanguage("de")
 transformData = (data) ->
 
   _.defaults(data,
-    invoice: {}
+    order: {}
     receiver: {}
     items: []
     intro_text: ""
     outro_text: ""
   )
 
-  data.invoice.language ?= "de"
-  setLanguage(data.invoice.language)
+  data.order.language ?= "de"
+  setLanguage(data.order.language)
 
-  data.invoice.date ?= new Date()
-  data.invoice.template ?= "default"
-  data.invoice.location ?= data.sender.town
-  data.invoice.currency ?= "€"
+  data.order.orderDate ?= new Date()
+  data.order.template ?= "default"
+  data.order.location ?= data.sender.town
+  data.order.currency ?= "€"
 
   data.items = data.items.map((item) ->
 
@@ -107,18 +107,18 @@ transformData = (data) ->
 inFilename = process.argv[2]
 outFilename = replaceExtname(inFilename, ".pdf")
 
-# console.log(tmpFilename)
+#console.log(tmpFilename)
 data = yaml.safeLoad(fs.readFileSync(inFilename, "utf8"))
 data = transformData(data)
 
-templateFolder = "#{__dirname}/templates/#{data.invoice.template}"
-if fs.existsSync(path.join(path.dirname(inFilename), "templates", data.invoice.template))
-  console.log("Using custom template `#{data.invoice.template}`")
-  templateFolder = path.join(path.dirname(inFilename), "templates", data.invoice.template)
+templateFolder = "#{__dirname}/templates/#{data.order.template}"
+
+if fs.existsSync(path.join(path.dirname(inFilename), "templates", data.order.template))
+  console.log("Using custom template `#{data.order.template}`")
+  templateFolder = path.join(path.dirname(inFilename), "templates", data.order.template)
 
 
 tmpFilename = "#{templateFolder}/#{"xxxx-xxxx-xxxx".replace(/x/g, -> ((Math.random() * 16) | 0).toString(16))}.html"
-
 
 # Prepare rendering
 handlebars.registerHelper("plusOne", (value) -> 
@@ -128,7 +128,7 @@ handlebars.registerHelper("number", (value) ->
   return numeral(value).format("0[.]0")
 )
 handlebars.registerHelper("money", (value) ->
-  return "#{numeral(value).format("0,0.00")} #{data.invoice.currency}"
+  return "#{numeral(value).format("0,0.00")} #{data.order.currency}"
 )
 handlebars.registerHelper("percent", (value) ->
   return numeral(value / 100).format("0 %")
@@ -151,13 +151,13 @@ handlebars.registerHelper("t", (phrase) ->
 )
 
 # Rendering
-template = handlebars.compile(fs.readFileSync("#{templateFolder}/main.html", "utf8"))
-fs.writeFileSync(tmpFilename, template(data), "utf8")
+template = handlebars.compile(fs.readFileSync("#{data.meta.sourceContent}", "utf8")) 
+fs.writeFileSync(data.meta.content, template(data), "utf8")
 
-wkhtmltopdf("file://#{path.resolve(tmpFilename)}", { 
+wkhtmltopdf("file:///#{data.meta.content}", { 
   output: outFilename,
-  headerHtml: "#{templateFolder}/header.html",
-  footerHtml: "#{templateFolder}/footer.html",
+  headerHtml: "file:///#{data.meta.header}",
+  footerHtml: "file:///#{data.meta.footer}",
   marginLeft: "0mm",
   marginRight: "0mm",
 }, (err) ->
@@ -166,5 +166,22 @@ wkhtmltopdf("file://#{path.resolve(tmpFilename)}", {
     console.error(err)
   else
     console.log("Created #{outFilename}")
-  fs.unlinkSync(tmpFilename)
+  
+  #fs.unlinkSync(tmpFilename)
 )
+##wkhtmltopdf(template(data), { 
+#wkhtmltopdf("file:///#{path.resolve(tmpFilename)}", { 
+#  output: outFilename,
+#  headerHtml: "file:///#{path.resolve(templateFolder)}/header.html",
+#  footerHtml: "file:///#{path.resolve(templateFolder)}/footer.html",
+#  marginLeft: "0mm",
+#  marginRight: "0mm",
+#}, (err) ->
+#  if err
+#    console.error("Error creating #{outFilename}")
+#    console.error(err)
+#  else
+#    console.log("Created #{outFilename}")
+#  
+#  #fs.unlinkSync(tmpFilename)
+#)
