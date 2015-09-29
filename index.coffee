@@ -155,7 +155,7 @@ template = handlebars.compile(fs.readFileSync("#{data.meta.sourceContent}", "utf
 fs.writeFileSync(data.meta.content, template(data), "utf8")
 
 wkhtmltopdf("file:///#{data.meta.content}", { 
-  output: outFilename,
+  output: "file:///#{data.meta.print}",
   headerHtml: "file:///#{data.meta.header}",
   footerHtml: "file:///#{data.meta.footer}",
   marginLeft: "0mm",
