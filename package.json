@@ -1,16 +1,21 @@
 {
-  "name": "invoice-compiler",
+  "name": "report-compiler",
   "version": "0.2.2",
-  "description": "Generate invoices from YAML files using wkhtmltopdf.",
+  "description": "Generate reports from YAML files using wkhtmltopdf. based on invoice-compiler",
   "main": "index.coffee",
-  "author": "Norman Rzepka <norman.rzepka@scm.io>",
+  "author": {
+    "name": "Nico Sap",
+    "email": "nico_sap@hotmail.com"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/scalableminds/invoice-compiler.git"
+    "url": "git://github.com/nicojuicy/report-compiler.git"
   },
-  "homepage": "http://scm.io/",
-  "bugs": "https://github.com/scalableminds/invoice-compiler/issues",
+  "homepage": "",
+  "bugs": {
+    "url": "https://github.com/NicoJuicy/report-compiler/issues"
+  },
   "engines": {
     "node": ">=0.10.0"
   },
@@ -25,6 +30,22 @@
     "wkhtmltopdf": "^0.1.5"
   },
   "bin": {
-    "invoice": "./bin/invoice"
-  }
+    "report": "./bin/report"
+  },
+  "_id": "report-compiler@0.2.2",
+  "scripts": {},
+  "_from": "report-compiler@",
+  "_npmVersion": "2.0.0-alpha-5",
+  "_npmUser": {
+    "name": "NicoJuicy",
+    "email": "nico_sap@hotmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "nicojuicy",
+      "email": "nico_sap@hotmail.com"
+    }
+  ],
+  "directories": {},
+  "readme": "ERROR: No README data found!"
 }
