@@ -6,7 +6,7 @@ path        = require("path")
 exec        = require("child_process").exec
 yaml        = require("js-yaml")
 moment      = require("moment")
-numeral     = require("numeral")
+numeral     = require("numeraljs")
 wkhtmltopdf = require("wkhtmltopdf")
 handlebars  = require("handlebars")
 
