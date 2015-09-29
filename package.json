@@ -3,29 +3,19 @@
   "version": "0.2.2",
   "description": "Generate reports from YAML files using wkhtmltopdf. based on invoice-compiler",
   "main": "index.coffee",
-<<<<<<< HEAD
-  "author": "Nico Sap <nico_sap@hotmail.com>",
-=======
   "author": {
     "name": "Nico Sap",
     "email": "nico_sap@hotmail.com"
   },
->>>>>>> 76030182c1766871ed4376cf32a7ddf60317b97a
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/nicojuicy/report-compiler.git"
-<<<<<<< HEAD
-  },
-  "homepage": "http://scm.io/",
-  "bugs": "https://github.com/nicojuicy/report/issues",
-=======
   },
   "homepage": "",
   "bugs": {
     "url": "https://github.com/NicoJuicy/report-compiler/issues"
   },
->>>>>>> 76030182c1766871ed4376cf32a7ddf60317b97a
   "engines": {
     "node": ">=0.10.0"
   },
@@ -41,9 +31,6 @@
   },
   "bin": {
     "report": "./bin/report"
-<<<<<<< HEAD
-  }
-=======
   },
   "_id": "report-compiler@0.2.2",
   "scripts": {},
@@ -61,5 +48,4 @@
   ],
   "directories": {},
   "readme": "ERROR: No README data found!"
->>>>>>> 76030182c1766871ed4376cf32a7ddf60317b97a
 }
