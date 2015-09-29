@@ -22,36 +22,36 @@
 8 verbose parsed url   href: '.' }
 9 silly lockFile 3a52ce78- .
 10 verbose lock . C:\Users\NSA-PC\AppData\Roaming\npm-cache\3a52ce78-.lock
-11 verbose tar pack [ 'C:\\Users\\NSA-PC\\AppData\\Roaming\\npm-cache\\invoice-compiler\\0.2.2\\package.tgz',
+11 verbose tar pack [ 'C:\\Users\\NSA-PC\\AppData\\Roaming\\npm-cache\\report-compiler\\0.2.2\\package.tgz',
 11 verbose tar pack   '.' ]
-12 verbose tarball C:\Users\NSA-PC\AppData\Roaming\npm-cache\invoice-compiler\0.2.2\package.tgz
+12 verbose tarball C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.2\package.tgz
 13 verbose folder .
-14 info prepublish invoice-compiler@0.2.2
+14 info prepublish report-compiler@0.2.2
 15 silly lockFile 1f1177db-tar tar://.
 16 verbose lock tar://. C:\Users\NSA-PC\AppData\Roaming\npm-cache\1f1177db-tar.lock
-17 silly lockFile 0d50d60a-voice-compiler-0-2-2-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\invoice-compiler\0.2.2\package.tgz
-18 verbose lock tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\invoice-compiler\0.2.2\package.tgz C:\Users\NSA-PC\AppData\Roaming\npm-cache\0d50d60a-voice-compiler-0-2-2-package-tgz.lock
+17 silly lockFile 477f6301-eport-compiler-0-2-2-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.2\package.tgz
+18 verbose lock tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.2\package.tgz C:\Users\NSA-PC\AppData\Roaming\npm-cache\477f6301-eport-compiler-0-2-2-package-tgz.lock
 19 silly lockFile 1f1177db-tar tar://.
 20 silly lockFile 1f1177db-tar tar://.
-21 silly lockFile 0d50d60a-voice-compiler-0-2-2-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\invoice-compiler\0.2.2\package.tgz
-22 silly lockFile 0d50d60a-voice-compiler-0-2-2-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\invoice-compiler\0.2.2\package.tgz
-23 silly lockFile f5c4ba17-e-invoice-compiler-0-2-2-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\invoice-compiler\0.2.2\package
-24 verbose lock C:\Users\NSA-PC\AppData\Roaming\npm-cache\invoice-compiler\0.2.2\package C:\Users\NSA-PC\AppData\Roaming\npm-cache\f5c4ba17-e-invoice-compiler-0-2-2-package.lock
-25 silly lockFile f5c4ba17-e-invoice-compiler-0-2-2-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\invoice-compiler\0.2.2\package
-26 silly lockFile f5c4ba17-e-invoice-compiler-0-2-2-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\invoice-compiler\0.2.2\package
+21 silly lockFile 477f6301-eport-compiler-0-2-2-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.2\package.tgz
+22 silly lockFile 477f6301-eport-compiler-0-2-2-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.2\package.tgz
+23 silly lockFile 381333bb-he-report-compiler-0-2-2-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.2\package
+24 verbose lock C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.2\package C:\Users\NSA-PC\AppData\Roaming\npm-cache\381333bb-he-report-compiler-0-2-2-package.lock
+25 silly lockFile 381333bb-he-report-compiler-0-2-2-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.2\package
+26 silly lockFile 381333bb-he-report-compiler-0-2-2-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.2\package
 27 silly lockFile 3a52ce78- .
 28 silly lockFile 3a52ce78- .
-29 silly publish { name: 'invoice-compiler',
+29 silly publish { name: 'report-compiler',
 29 silly publish   version: '0.2.2',
-29 silly publish   description: 'Generate invoices from YAML files using wkhtmltopdf.',
+29 silly publish   description: 'Generate reports from YAML files using wkhtmltopdf. based on invoice-compiler',
 29 silly publish   main: 'index.coffee',
-29 silly publish   author: { name: 'Norman Rzepka', email: 'norman.rzepka@scm.io' },
+29 silly publish   author: { name: 'Nico Sap', email: 'nico_sap@hotmail.com' },
 29 silly publish   license: 'MIT',
 29 silly publish   repository:
 29 silly publish    { type: 'git',
-29 silly publish      url: 'git://github.com/scalableminds/invoice-compiler.git' },
-29 silly publish   homepage: 'http://scm.io/',
-29 silly publish   bugs: { url: 'https://github.com/scalableminds/invoice-compiler/issues' },
+29 silly publish      url: 'git://github.com/nicojuicy/report-compiler.git' },
+29 silly publish   homepage: 'https://github.com/nicojuicy/report-compiler',
+29 silly publish   bugs: { url: 'https://github.com/NicoJuicy/report-compiler/issues' },
 29 silly publish   engines: { node: '>=0.10.0' },
 29 silly publish   dependencies:
 29 silly publish    { 'coffee-script': '^1.8.0',
@@ -60,39 +60,42 @@
 29 silly publish      lodash: '^2.4.1',
 29 silly publish      mkdirp: '^0.5.0',
 29 silly publish      moment: '^2.7.0',
-29 silly publish      numeral: '^1.5.3',
+29 silly publish      numeraljs: '^1.5.3',
 29 silly publish      wkhtmltopdf: '^0.1.5' },
-29 silly publish   bin: { invoice: './bin/invoice' },
-29 silly publish   gitHead: '3a0d0d3b37008d3e0c055e6282589abb83a1a82e',
-29 silly publish   readme: '# invoice-compiler\r\nGenerate invoices from YAML files using [wkhtmltopdf](http://wkhtmltopdf.org/).\r\n\r\n## Install\r\n```bash\r\nnpm install -g invoice-compiler\r\n```\r\n\r\n## Usage\r\n```bash\r\ninvoice invoice.yml\r\n# Outputs invoice.pdf\r\n```\r\n\r\nSee `samples` directory for [an annotated sample](https://github.com/scalableminds/invoice-compiler/blob/master/samples/42.yml).\r\n\r\n\r\n## Dependencies\r\n* node & npm\r\n* [wkhtmltopdf](https://github.com/devongovett/node-wkhtmltopdf#installation)\r\n* [Open Sans](http://www.fontsquirrel.com/fonts/open-sans) font\r\n\r\n\r\n## Credits\r\nThe default template is based on a LaTeX class by Patrick Lühne, [http://www.luehne.de/](http://www.luehne.de/).\r\n\r\n## License\r\nMIT &copy; scalable minds 2014',
-29 silly publish   readmeFilename: 'readme.md',
-29 silly publish   _id: 'invoice-compiler@0.2.2',
+29 silly publish   bin: { report: './bin/report' },
+29 silly publish   _id: 'report-compiler@0.2.2',
 29 silly publish   scripts: {},
-29 silly publish   _shasum: '5e7358e0073a10d73c39ca74c73d690e3db42e4b',
-29 silly publish   _from: '.' }
-30 verbose request where is /invoice-compiler
+29 silly publish   _from: '.',
+29 silly publish   _npmVersion: '2.0.0-alpha-5',
+29 silly publish   _npmUser: { name: 'NicoJuicy', email: 'nico_sap@hotmail.com' },
+29 silly publish   maintainers: [ { name: 'nicojuicy', email: 'nico_sap@hotmail.com' } ],
+29 silly publish   directories: {},
+29 silly publish   readme: 'ERROR: No README data found!',
+29 silly publish   gitHead: '26ac336d6aae1c6a9168616efd57d3aa15606818',
+29 silly publish   _shasum: '747a479ea797d8a00c42eb41acdde582c1716355' }
+30 verbose request where is /report-compiler
 31 verbose request registry https://registry.npmjs.org/
-32 verbose request id dbeefc4225ac8332
-33 verbose url raw /invoice-compiler
-34 verbose url resolving [ 'https://registry.npmjs.org/', './invoice-compiler' ]
-35 verbose url resolved https://registry.npmjs.org/invoice-compiler
-36 verbose request where is https://registry.npmjs.org/invoice-compiler
-37 info trying registry request attempt 1 at 16:19:25
-38 http PUT https://registry.npmjs.org/invoice-compiler
-39 http 403 https://registry.npmjs.org/invoice-compiler
+32 verbose request id 2a168165be778e0d
+33 verbose url raw /report-compiler
+34 verbose url resolving [ 'https://registry.npmjs.org/', './report-compiler' ]
+35 verbose url resolved https://registry.npmjs.org/report-compiler
+36 verbose request where is https://registry.npmjs.org/report-compiler
+37 info trying registry request attempt 1 at 16:41:24
+38 http PUT https://registry.npmjs.org/report-compiler
+39 http 403 https://registry.npmjs.org/report-compiler
 40 verbose headers { 'content-type': 'application/json',
 40 verbose headers   'cache-control': 'max-age=60',
-40 verbose headers   'content-length': '108',
+40 verbose headers   'content-length': '95',
 40 verbose headers   'accept-ranges': 'bytes',
-40 verbose headers   date: 'Tue, 29 Sep 2015 14:19:25 GMT',
+40 verbose headers   date: 'Tue, 29 Sep 2015 14:41:23 GMT',
 40 verbose headers   via: '1.1 varnish',
 40 verbose headers   connection: 'keep-alive',
-40 verbose headers   'x-served-by': 'cache-ams4140-AMS',
+40 verbose headers   'x-served-by': 'cache-ams4142-AMS',
 40 verbose headers   'x-cache': 'MISS',
 40 verbose headers   'x-cache-hits': '0',
-40 verbose headers   'x-timer': 'S1443536363.696497,VS0,VE1400' }
+40 verbose headers   'x-timer': 'S1443537682.157091,VS0,VE1545' }
 41 error publish Failed PUT 403
-42 error Error: You do not have permission to publish 'invoice-compiler'. Are you logged in as the correct user? : invoice-compiler
+42 error Error: "You cannot publish over the previously published version 0.2.2." : report-compiler
 42 error     at RegClient.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:308:14)
 42 error     at Request._callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:246:65)
 42 error     at Request.self.callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:236:22)
