@@ -22,27 +22,27 @@
 8 verbose parsed url   href: '.' }
 9 silly lockFile 3a52ce78- .
 10 verbose lock . C:\Users\NSA-PC\AppData\Roaming\npm-cache\3a52ce78-.lock
-11 verbose tar pack [ 'C:\\Users\\NSA-PC\\AppData\\Roaming\\npm-cache\\report-compiler\\0.2.3\\package.tgz',
+11 verbose tar pack [ 'C:\\Users\\NSA-PC\\AppData\\Roaming\\npm-cache\\report-compiler\\0.2.4\\package.tgz',
 11 verbose tar pack   '.' ]
-12 verbose tarball C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.3\package.tgz
+12 verbose tarball C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.4\package.tgz
 13 verbose folder .
-14 info prepublish report-compiler@0.2.3
+14 info prepublish report-compiler@0.2.4
 15 silly lockFile 1f1177db-tar tar://.
 16 verbose lock tar://. C:\Users\NSA-PC\AppData\Roaming\npm-cache\1f1177db-tar.lock
-17 silly lockFile 3948afdc-eport-compiler-0-2-3-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.3\package.tgz
-18 verbose lock tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.3\package.tgz C:\Users\NSA-PC\AppData\Roaming\npm-cache\3948afdc-eport-compiler-0-2-3-package-tgz.lock
+17 silly lockFile 9cb10f1a-eport-compiler-0-2-4-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.4\package.tgz
+18 verbose lock tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.4\package.tgz C:\Users\NSA-PC\AppData\Roaming\npm-cache\9cb10f1a-eport-compiler-0-2-4-package-tgz.lock
 19 silly lockFile 1f1177db-tar tar://.
 20 silly lockFile 1f1177db-tar tar://.
-21 silly lockFile 3948afdc-eport-compiler-0-2-3-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.3\package.tgz
-22 silly lockFile 3948afdc-eport-compiler-0-2-3-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.3\package.tgz
-23 silly lockFile d04d316d-he-report-compiler-0-2-3-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.3\package
-24 verbose lock C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.3\package C:\Users\NSA-PC\AppData\Roaming\npm-cache\d04d316d-he-report-compiler-0-2-3-package.lock
-25 silly lockFile d04d316d-he-report-compiler-0-2-3-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.3\package
-26 silly lockFile d04d316d-he-report-compiler-0-2-3-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.3\package
+21 silly lockFile 9cb10f1a-eport-compiler-0-2-4-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.4\package.tgz
+22 silly lockFile 9cb10f1a-eport-compiler-0-2-4-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.4\package.tgz
+23 silly lockFile 7a17a767-he-report-compiler-0-2-4-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.4\package
+24 verbose lock C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.4\package C:\Users\NSA-PC\AppData\Roaming\npm-cache\7a17a767-he-report-compiler-0-2-4-package.lock
+25 silly lockFile 7a17a767-he-report-compiler-0-2-4-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.4\package
+26 silly lockFile 7a17a767-he-report-compiler-0-2-4-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.2.4\package
 27 silly lockFile 3a52ce78- .
 28 silly lockFile 3a52ce78- .
 29 silly publish { name: 'report-compiler',
-29 silly publish   version: '0.2.3',
+29 silly publish   version: '0.2.4',
 29 silly publish   description: 'Generate reports from YAML files using wkhtmltopdf. based on invoice-compiler',
 29 silly publish   main: 'index.coffee',
 29 silly publish   author: { name: 'Nico Sap', email: 'nico_sap@hotmail.com' },
@@ -60,10 +60,10 @@
 29 silly publish      lodash: '^2.4.1',
 29 silly publish      mkdirp: '^0.5.0',
 29 silly publish      moment: '^2.7.0',
-29 silly publish      numeraljs: '^1.5.3',
+29 silly publish      numeraljs: '^1.5.4',
 29 silly publish      wkhtmltopdf: '^0.1.5' },
 29 silly publish   bin: { report: './bin/report' },
-29 silly publish   _id: 'report-compiler@0.2.3',
+29 silly publish   _id: 'report-compiler@0.2.4',
 29 silly publish   scripts: {},
 29 silly publish   _from: '.',
 29 silly publish   _npmVersion: '2.0.0-alpha-5',
@@ -71,31 +71,31 @@
 29 silly publish   maintainers: [ { name: 'nicojuicy', email: 'nico_sap@hotmail.com' } ],
 29 silly publish   directories: {},
 29 silly publish   readme: 'ERROR: No README data found!',
-29 silly publish   gitHead: 'a342e9b58a8aa50a1978055d5081164ff36d6d1b',
-29 silly publish   _shasum: '22bfebc5d57a66049ad8e556cf51d462aff05516' }
+29 silly publish   gitHead: '26457c64d441d769c8ab5144d023f9e2fb53e086',
+29 silly publish   _shasum: 'd9153273497e0afe907eaea186b53c77af4051e8' }
 30 verbose request where is /report-compiler
 31 verbose request registry https://registry.npmjs.org/
-32 verbose request id 8e313a198a267479
+32 verbose request id 4e951a0d99028b00
 33 verbose url raw /report-compiler
 34 verbose url resolving [ 'https://registry.npmjs.org/', './report-compiler' ]
 35 verbose url resolved https://registry.npmjs.org/report-compiler
 36 verbose request where is https://registry.npmjs.org/report-compiler
-37 info trying registry request attempt 1 at 17:05:03
+37 info trying registry request attempt 1 at 17:12:39
 38 http PUT https://registry.npmjs.org/report-compiler
 39 http 403 https://registry.npmjs.org/report-compiler
 40 verbose headers { 'content-type': 'application/json',
 40 verbose headers   'cache-control': 'max-age=60',
 40 verbose headers   'content-length': '95',
 40 verbose headers   'accept-ranges': 'bytes',
-40 verbose headers   date: 'Tue, 29 Sep 2015 15:05:02 GMT',
+40 verbose headers   date: 'Tue, 29 Sep 2015 15:12:39 GMT',
 40 verbose headers   via: '1.1 varnish',
 40 verbose headers   connection: 'keep-alive',
-40 verbose headers   'x-served-by': 'cache-ams4145-AMS',
+40 verbose headers   'x-served-by': 'cache-ams4123-AMS',
 40 verbose headers   'x-cache': 'MISS',
 40 verbose headers   'x-cache-hits': '0',
-40 verbose headers   'x-timer': 'S1443539100.966436,VS0,VE1561' }
+40 verbose headers   'x-timer': 'S1443539557.625373,VS0,VE1429' }
 41 error publish Failed PUT 403
-42 error Error: "You cannot publish over the previously published version 0.2.3." : report-compiler
+42 error Error: "You cannot publish over the previously published version 0.2.4." : report-compiler
 42 error     at RegClient.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:308:14)
 42 error     at Request._callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:246:65)
 42 error     at Request.self.callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:236:22)
