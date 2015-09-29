@@ -16,7 +16,7 @@ translation = {}
 setLanguage = (lang) ->
   moment.locale(lang)
   try
-    numeral.language(lang, require("numeral/languages/#{lang}"))
+    numeral.language(lang, require("numeraljs/languages/#{lang}"))
   catch e
   numeral.language(lang)
   translation = require("./languages/#{lang}.json")
