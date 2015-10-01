@@ -19,7 +19,8 @@ setLanguage = (lang) ->
     numeral.language(lang, require("numeraljs/languages/#{lang}"))
   catch e
   numeral.language(lang)
-  translation = require("./languages/#{lang}.json")
+  translation = require(path.join(data.meta.destination.assetsFolder,"languages","#{lang}.json"))
+  #translation = require("./languages/#{lang}.json")
 
 replaceExtname = (filename, newExtname) ->
   return filename.replace(new RegExp(path.extname(filename).replace(/\./g, "\\."), "g"), newExtname)
@@ -40,7 +41,7 @@ calculateTotal = (items) ->
 
 
 # Default language setting
-setLanguage("de")
+#setLanguage("de")
 
 # Business logic transformation
 transformData = (data) ->
@@ -56,6 +57,8 @@ transformData = (data) ->
   data.order.language ?= "de"
   setLanguage(data.order.language)
 
+  data.meta.assets = path.join(data.meta.destination.assetsFolder)
+
   data.order.orderDate ?= new Date()
   data.order.template ?= "default"
   data.order.location ?= data.sender.town
@@ -66,6 +69,7 @@ transformData = (data) ->
     item = _.defaults(item,
       quantity: 1
       tax_rate: 0
+      discount_percentage : 0
     )
 
     if not item.title?
@@ -74,12 +78,20 @@ transformData = (data) ->
     if not item.price?
       throw new Error("An invoice item needs a price.")
 
-    if _.isString(item.quantity)
-      item.quantity = (new Function("return #{item.quantity.replace(/\#/g, "//")};"))()
+    if not item.discountPercentage
+      item.discountPercentage = 0
 
+    #if _.isString(item.quantity)
+    #  item.quantity = (new Function("return #{item.quantity.replace(/\#/g, "//")};"))()
+    
+    item.tax_rate = item.taxRate
+    item.discount_percentage = item.discountPercentage
+
+    item.quantity = parseInt(item.quantity)
     item.quantity = Math.ceil(item.quantity)
 
-    item.net_value = item.quantity * item.price
+    item.net_value = (item.quantity * item.price) * (1 - (item.discount_percentage / 100))
+    
     item.tax_value = item.net_value * (item.tax_rate / 100)
     item.total_value = item.net_value * (1 + item.tax_rate / 100)
 
@@ -107,16 +119,19 @@ transformData = (data) ->
 inFilename = process.argv[2]
 outFilename = replaceExtname(inFilename, ".pdf")
 
-#console.log(tmpFilename)
 data = yaml.safeLoad(fs.readFileSync(inFilename, "utf8"))
 data = transformData(data)
 
-templateFolder = "#{__dirname}/templates/#{data.order.template}"
+# Default language setting
+#setLanguage("de")
 
-if fs.existsSync(path.join(path.dirname(inFilename), "templates", data.order.template))
-  console.log("Using custom template `#{data.order.template}`")
-  templateFolder = path.join(path.dirname(inFilename), "templates", data.order.template)
+#templateFolder = "#{__dirname}/templates/#{data.order.template}"
 
+#if fs.existsSync(path.join(path.dirname(inFilename), "templates", data.order.template
+#if fs.existsSync(path.join(data.meta.templateFolder, data.order.template))
+#  #templateFolder = path.join(path.dirname(inFilename), "templates", data.order.template)
+#  templateFolder = path.join(data.meta.templateFolder, data.order.template)
+templateFolder = data.meta.template.folder
 
 tmpFilename = "#{templateFolder}/#{"xxxx-xxxx-xxxx".replace(/x/g, -> ((Math.random() * 16) | 0).toString(16))}.html"
 
@@ -151,21 +166,28 @@ handlebars.registerHelper("t", (phrase) ->
 )
 
 # Rendering
-template = handlebars.compile(fs.readFileSync("#{data.meta.sourceContent}", "utf8")) 
-fs.writeFileSync(data.meta.content, template(data), "utf8")
+#-- Header
+template = handlebars.compile(fs.readFileSync("#{data.meta.template.header}", "utf8")) 
+fs.writeFileSync(data.meta.destination.header, template(data), "utf8")
+# -- Footer
+template = handlebars.compile(fs.readFileSync("#{data.meta.template.footer}", "utf8")) 
+fs.writeFileSync(data.meta.destination.footer, template(data), "utf8")
+#-- Body
+template = handlebars.compile(fs.readFileSync("#{data.meta.template.body}", "utf8")) 
+fs.writeFileSync(data.meta.destination.body, template(data), "utf8")
 
-wkhtmltopdf("file:///#{data.meta.content}", { 
-  output: "#{data.meta.print}",
-  headerHtml: "file:///#{data.meta.header}",
-  footerHtml: "file:///#{data.meta.footer}",
+wkhtmltopdf("file:///#{data.meta.destination.body}", { 
+  output: "#{data.meta.destination.pdf}",
+  headerHtml: "file:///#{data.meta.destination.header}",
+  footerHtml: "file:///#{data.meta.destination.footer}",
   marginLeft: "0mm",
   marginRight: "0mm",
 }, (err) ->
   if err
-    console.error("Error creating #{data.meta.print}")
+    console.error("Error creating #{data.meta.destination.pdf}")
     console.error(err)
   else
-    console.log("Created #{outFilename}")
+    console.log("Created #{data.meta.destination.pdf}")
   
   #fs.unlinkSync(tmpFilename)
 )
