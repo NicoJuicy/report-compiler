@@ -125,12 +125,7 @@ data = transformData(data)
 # Default language setting
 #setLanguage("de")
 
-#templateFolder = "#{__dirname}/templates/#{data.order.template}"
 
-#if fs.existsSync(path.join(path.dirname(inFilename), "templates", data.order.template
-#if fs.existsSync(path.join(data.meta.templateFolder, data.order.template))
-#  #templateFolder = path.join(path.dirname(inFilename), "templates", data.order.template)
-#  templateFolder = path.join(data.meta.templateFolder, data.order.template)
 templateFolder = data.meta.template.folder
 
 tmpFilename = "#{templateFolder}/#{"xxxx-xxxx-xxxx".replace(/x/g, -> ((Math.random() * 16) | 0).toString(16))}.html"
@@ -145,6 +140,11 @@ handlebars.registerHelper("number", (value) ->
 handlebars.registerHelper("money", (value) ->
   return "#{numeral(value).format("0,0.00")} #{data.order.currency}"
 )
+
+handlebars.registerHelper("moneyRound", (value) ->
+  return "#{numeral(value).format("0,0.00")}"
+)
+
 handlebars.registerHelper("percent", (value) ->
   return numeral(value / 100).format("0 %")
 )
@@ -166,23 +166,28 @@ handlebars.registerHelper("t", (phrase) ->
 )
 
 # Rendering
+args ={
+  output: "#{data.meta.destination.pdf}",
+  marginLeft: "0mm",
+  marginRight: "0mm",
+}
 #-- Header
-template = handlebars.compile(fs.readFileSync("#{data.meta.template.header}", "utf8")) 
-fs.writeFileSync(data.meta.destination.header, template(data), "utf8")
+
+if !!data.meta.destination.header 
+  args.headerHtml = "file:///#{data.meta.destination.header}"
+  template = handlebars.compile(fs.readFileSync("#{data.meta.template.header}", "utf8")) 
+  fs.writeFileSync(data.meta.destination.header, template(data), "utf8")
 # -- Footer
-template = handlebars.compile(fs.readFileSync("#{data.meta.template.footer}", "utf8")) 
-fs.writeFileSync(data.meta.destination.footer, template(data), "utf8")
+if !!data.meta.destination.footer
+  args.footerHtml = "file:///#{data.meta.destination.footer}"
+  template = handlebars.compile(fs.readFileSync("#{data.meta.template.footer}", "utf8")) 
+  fs.writeFileSync(data.meta.destination.footer, template(data), "utf8")
 #-- Body
 template = handlebars.compile(fs.readFileSync("#{data.meta.template.body}", "utf8")) 
 fs.writeFileSync(data.meta.destination.body, template(data), "utf8")
 
-wkhtmltopdf("file:///#{data.meta.destination.body}", { 
-  output: "#{data.meta.destination.pdf}",
-  headerHtml: "file:///#{data.meta.destination.header}",
-  footerHtml: "file:///#{data.meta.destination.footer}",
-  marginLeft: "0mm",
-  marginRight: "0mm",
-}, (err) ->
+  
+wkhtmltopdf("file:///#{data.meta.destination.body}", args, (err) ->
   if err
     console.error("Error creating #{data.meta.destination.pdf}")
     console.error(err)
@@ -191,19 +196,3 @@ wkhtmltopdf("file:///#{data.meta.destination.body}", {
   
   #fs.unlinkSync(tmpFilename)
 )
-##wkhtmltopdf(template(data), { 
-#wkhtmltopdf("file:///#{path.resolve(tmpFilename)}", { 
-#  output: outFilename,
-#  headerHtml: "file:///#{path.resolve(templateFolder)}/header.html",
-#  footerHtml: "file:///#{path.resolve(templateFolder)}/footer.html",
-#  marginLeft: "0mm",
-#  marginRight: "0mm",
-#}, (err) ->
-#  if err
-#    console.error("Error creating #{outFilename}")
-#    console.error(err)
-#  else
-#    console.log("Created #{outFilename}")
-#  
-#  #fs.unlinkSync(tmpFilename)
-#)

@@ -1,6 +1,6 @@
 {
   "name": "report-compiler",
-  "version": "0.3.9",
+  "version": "0.4.2",
   "description": "Generate reports from YAML files using wkhtmltopdf. based on invoice-compiler",
   "main": "index.coffee",
   "author": {
