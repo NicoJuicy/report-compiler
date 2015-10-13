@@ -69,14 +69,18 @@ transformData = (data) ->
     item = _.defaults(item,
       quantity: 1
       tax_rate: 0
+      taxRate: 0
       discount_percentage : 0
+      discountPercentage : 0
     )
 
     if not item.title?
-      throw new Error("An invoice item needs a title.")
+      item.title = ""
+  #throw new Error("An invoice item needs a title.")
 
     if not item.price?
-      throw new Error("An invoice item needs a price.")
+      item.price = 0
+      #throw new Error("An invoice item needs a price.")
 
     if not item.discountPercentage
       item.discountPercentage = 0
@@ -86,19 +90,14 @@ transformData = (data) ->
     
     item.tax_rate = item.taxRate
     item.discount_percentage = item.discountPercentage
-
-    item.quantity = parseInt(item.quantity)
-    item.quantity = Math.ceil(item.quantity)
-
-    item.net_value = (item.quantity * item.price) * (1 - (item.discount_percentage / 100))
-    
+    #item.quantity = parseInt(item.quantity)
+    #item.quantity = Math.ceil(item.quantity)
+    item.net_value = (item.quantity * item.price) * (1 - (item.discount_percentage / 100)) 
     item.tax_value = item.net_value * (item.tax_rate / 100)
     item.total_value = item.net_value * (1 + item.tax_rate / 100)
-
     item.net_value = roundCurrency(item.net_value)
     item.tax_value = roundCurrency(item.tax_value)
     item.total_value = roundCurrency(item.total_value)
-
     return item
   )
 

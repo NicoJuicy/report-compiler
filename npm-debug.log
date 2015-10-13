@@ -6,23 +6,112 @@
 3 info using node@v0.10.33
 4 verbose node symlink C:\Program Files (x86)\nodejs\\node.exe
 5 verbose publish [ '.' ]
-6 error Error: Invalid version: "0.3."
-6 error     at Object.module.exports.fixVersionField (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\read-package-json\node_modules\normalize-package-data\lib\fixer.js:183:13)
-6 error     at C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\read-package-json\node_modules\normalize-package-data\lib\normalize.js:30:38
-6 error     at Array.forEach (native)
-6 error     at normalize (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\read-package-json\node_modules\normalize-package-data\lib\normalize.js:29:15)
-6 error     at final (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\read-package-json\read-json.js:342:33)
-6 error     at then (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\read-package-json\read-json.js:126:33)
-6 error     at C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\read-package-json\read-json.js:331:40
-6 error     at evalmachine.<anonymous>:271:14
-6 error     at C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\graceful-fs\graceful-fs.js:102:5
-6 error     at Object.oncomplete (evalmachine.<anonymous>:107:15)
-7 error If you need help, you may report this *entire* log,
-7 error including the npm and node versions, at:
-7 error     <http://github.com/npm/npm/issues>
-8 error System Windows_NT 6.1.7601
-9 error command "C:\\Program Files (x86)\\nodejs\\\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
-10 error cwd C:\Users\NSA-PC\AppData\Local\Temp\compiler\report-compiler
-11 error node -v v0.10.33
-12 error npm -v 1.4.28
-13 verbose exit [ 1, true ]
+6 verbose cache add [ '.', null ]
+7 verbose cache add name=undefined spec="." args=[".",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: '.',
+8 verbose parsed url   path: '.',
+8 verbose parsed url   href: '.' }
+9 silly lockFile 3a52ce78- .
+10 verbose lock . C:\Users\NSA-PC\AppData\Roaming\npm-cache\3a52ce78-.lock
+11 verbose tar pack [ 'C:\\Users\\NSA-PC\\AppData\\Roaming\\npm-cache\\report-compiler\\0.4.3\\package.tgz',
+11 verbose tar pack   '.' ]
+12 verbose tarball C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.4.3\package.tgz
+13 verbose folder .
+14 info prepublish report-compiler@0.4.3
+15 silly lockFile 1f1177db-tar tar://.
+16 verbose lock tar://. C:\Users\NSA-PC\AppData\Roaming\npm-cache\1f1177db-tar.lock
+17 silly lockFile cb060265-eport-compiler-0-4-3-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.4.3\package.tgz
+18 verbose lock tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.4.3\package.tgz C:\Users\NSA-PC\AppData\Roaming\npm-cache\cb060265-eport-compiler-0-4-3-package-tgz.lock
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 1f1177db-tar tar://.
+21 silly lockFile cb060265-eport-compiler-0-4-3-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.4.3\package.tgz
+22 silly lockFile cb060265-eport-compiler-0-4-3-package-tgz tar://C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.4.3\package.tgz
+23 silly lockFile b8fee334-he-report-compiler-0-4-3-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.4.3\package
+24 verbose lock C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.4.3\package C:\Users\NSA-PC\AppData\Roaming\npm-cache\b8fee334-he-report-compiler-0-4-3-package.lock
+25 silly lockFile b8fee334-he-report-compiler-0-4-3-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.4.3\package
+26 silly lockFile b8fee334-he-report-compiler-0-4-3-package C:\Users\NSA-PC\AppData\Roaming\npm-cache\report-compiler\0.4.3\package
+27 silly lockFile 3a52ce78- .
+28 silly lockFile 3a52ce78- .
+29 silly publish { name: 'report-compiler',
+29 silly publish   version: '0.4.3',
+29 silly publish   description: 'Generate reports from YAML files using wkhtmltopdf. based on invoice-compiler',
+29 silly publish   main: 'index.coffee',
+29 silly publish   author: { name: 'Nico Sap', email: 'nico_sap@hotmail.com' },
+29 silly publish   license: 'MIT',
+29 silly publish   repository:
+29 silly publish    { type: 'git',
+29 silly publish      url: 'git://github.com/nicojuicy/report-compiler.git' },
+29 silly publish   homepage: 'https://github.com/nicojuicy/report-compiler',
+29 silly publish   bugs: { url: 'https://github.com/NicoJuicy/report-compiler/issues' },
+29 silly publish   engines: { node: '>=0.10.0' },
+29 silly publish   dependencies:
+29 silly publish    { 'coffee-script': '^1.8.0',
+29 silly publish      handlebars: '^3.0.3',
+29 silly publish      'js-yaml': '^3.0.2',
+29 silly publish      lodash: '^2.4.1',
+29 silly publish      mkdirp: '^0.5.0',
+29 silly publish      moment: '^2.7.0',
+29 silly publish      numeraljs: '^1.5.6',
+29 silly publish      wkhtmltopdf: '^0.1.5' },
+29 silly publish   bin: { report: './bin/report' },
+29 silly publish   _id: 'report-compiler@0.4.3',
+29 silly publish   scripts: {},
+29 silly publish   _from: '.',
+29 silly publish   _npmVersion: '2.0.0-alpha-5',
+29 silly publish   _npmUser: { name: 'NicoJuicy', email: 'nico_sap@hotmail.com' },
+29 silly publish   maintainers: [ { name: 'nicojuicy', email: 'nico_sap@hotmail.com' } ],
+29 silly publish   directories: {},
+29 silly publish   readme: 'ERROR: No README data found!',
+29 silly publish   gitHead: '119d8316df116519cba84523b54ebff39012a1f9',
+29 silly publish   _shasum: '8b64e9583b9c360908b0ca706da0e333bf3fd97b' }
+30 verbose request where is /report-compiler
+31 verbose request registry https://registry.npmjs.org/
+32 verbose request id c3012fe597cd51a6
+33 verbose url raw /report-compiler
+34 verbose url resolving [ 'https://registry.npmjs.org/', './report-compiler' ]
+35 verbose url resolved https://registry.npmjs.org/report-compiler
+36 verbose request where is https://registry.npmjs.org/report-compiler
+37 info trying registry request attempt 1 at 09:07:17
+38 http PUT https://registry.npmjs.org/report-compiler
+39 http 403 https://registry.npmjs.org/report-compiler
+40 verbose headers { 'content-type': 'application/json',
+40 verbose headers   'cache-control': 'max-age=60',
+40 verbose headers   'content-length': '95',
+40 verbose headers   'accept-ranges': 'bytes',
+40 verbose headers   date: 'Fri, 09 Oct 2015 07:07:19 GMT',
+40 verbose headers   via: '1.1 varnish',
+40 verbose headers   connection: 'keep-alive',
+40 verbose headers   'x-served-by': 'cache-ams4141-AMS',
+40 verbose headers   'x-cache': 'MISS',
+40 verbose headers   'x-cache-hits': '0',
+40 verbose headers   'x-timer': 'S1444374437.885906,VS0,VE1641' }
+41 error publish Failed PUT 403
+42 error Error: "You cannot publish over the previously published version 0.4.3." : report-compiler
+42 error     at RegClient.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:308:14)
+42 error     at Request._callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:246:65)
+42 error     at Request.self.callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:236:22)
+42 error     at Request.emit (events.js:98:17)
+42 error     at Request.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:1142:14)
+42 error     at Request.emit (events.js:117:20)
+42 error     at IncomingMessage.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:1096:12)
+42 error     at IncomingMessage.emit (events.js:117:20)
+42 error     at _stream_readable.js:943:16
+42 error     at process._tickCallback (node.js:419:13)
+43 error If you need help, you may report this *entire* log,
+43 error including the npm and node versions, at:
+43 error     <http://github.com/npm/npm/issues>
+44 error System Windows_NT 6.1.7601
+45 error command "C:\\Program Files (x86)\\nodejs\\\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+46 error cwd C:\Users\NSA-PC\AppData\Local\Temp\compiler\report-compiler
+47 error node -v v0.10.33
+48 error npm -v 1.4.28
+49 verbose exit [ 1, true ]

@@ -1,0 +1,12 @@
+{
+  "Invoice": "Invoice",
+  "Item": "Product",
+  "Qty.": "Amount",
+  "Description": "Description",
+  "Unit Price": "Unit price",
+  "VAT": "VAT",
+  "Net": "Excl",
+  "Contact": "Contact",
+  "Subtotal": "Netto",
+  "Total": "Total"
+}

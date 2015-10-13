@@ -1,0 +1,12 @@
+{
+  "Invoice": "Factuur",
+  "Item": "Artikel",
+  "Qty.": "Aantal",
+  "Description": "Beschrijving",
+  "Unit Price": "Eenheidsprijs",
+  "VAT": "BTW",
+  "Net": "Excl",
+  "Contact": "Contactpersoon",
+  "Subtotal": "Netto",
+  "Total": "Totaal"
+}
