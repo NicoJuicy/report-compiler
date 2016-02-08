@@ -28,8 +28,22 @@ replaceExtname = (filename, newExtname) ->
 roundCurrency = (value) ->
   if isNaN(value)
     value = 0
-  return parseFloat(value.toFixed(2))
+  return parseFloat(round(value,2).toFixed(2))
 
+round = (value, exp) ->
+  if typeof exp == 'undefined' or +exp == 0
+    return Math.round(value)
+  value = +value
+  exp = +exp
+  if isNaN(value) or !(typeof exp == 'number' and exp % 1 == 0)
+    return NaN
+  # Shift
+  value = value.toString().split('e')
+  value = Math.round(+(value[0] + 'e' + (if value[1] then +value[1] + exp else exp)))
+  # Shift back
+  value = value.toString().split('e')
+  +(value[0] + 'e' + (if value[1] then +value[1] - exp else -exp))
+  
 sum = (items) ->
   items.reduce(((r, a) -> r + a), 0)
 
