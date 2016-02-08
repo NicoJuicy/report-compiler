@@ -36,6 +36,9 @@ sum = (items) ->
 calculateNet = (items) ->
   return sum(_.pluck(items, "net_value"))
 
+calculateDiscount = (items) ->
+  return sum(_.pluck(items, "net_discount"))
+
 calculateTotal = (items) ->
   return sum(_.pluck(items, "total_value"))
 
@@ -72,11 +75,12 @@ transformData = (data) ->
       taxRate: 0
       discount_percentage : 0
       discountPercentage : 0
+      type : 'd'
     )
 
     if not item.title?
       item.title = ""
-  #throw new Error("An invoice item needs a title.")
+      #throw new Error("An invoice item needs a title.")
 
     if not item.price?
       item.price = 0
@@ -89,14 +93,15 @@ transformData = (data) ->
     #  item.quantity = (new Function("return #{item.quantity.replace(/\#/g, "//")};"))()
     
     item.tax_rate = item.taxRate
-    item.discount_percentage = item.discountPercentage
+    item.discount_percentage = parseFloat(item.discountPercentage)
     #item.quantity = parseInt(item.quantity)
     #item.quantity = Math.ceil(item.quantity)
+    item.net_discount = (item.quantity * item.price) * (item.discount_percentage / 100)
     item.net_value = (item.quantity * item.price) * (1 - (item.discount_percentage / 100)) 
     item.tax_value = item.net_value * (item.tax_rate / 100)
+    item.tax_valueRaw = item.tax_value
     item.total_value = item.net_value * (1 + item.tax_rate / 100)
     item.net_value = roundCurrency(item.net_value)
-    item.tax_valueRaw = item.tax_value
     item.tax_value = roundCurrency(item.tax_value)
     item.total_value = roundCurrency(item.total_value)
     return item
@@ -104,6 +109,7 @@ transformData = (data) ->
 
   data.totals =
     net: calculateNet(data.items)
+    discount : calculateDiscount(data.items)
     total: calculateTotal(data.items)
     tax: _.map(_.groupBy(data.items, "tax_rate"), (tax_group, tax_rate) ->
         return {
@@ -146,8 +152,12 @@ handlebars.registerHelper("moneyRound", (value) ->
 )
 
 handlebars.registerHelper("percent", (value) ->
+  return numeral(value/100).format("0.00 %")
+)
+handlebars.registerHelper("fullPercent", (value) ->
   return numeral(value / 100).format("0 %")
 )
+
 handlebars.registerHelper("date", (value) ->
   return moment(value).format("LL")
 )

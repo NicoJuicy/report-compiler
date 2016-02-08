@@ -1,23 +1,45 @@
 {
-  "name": "report-compiler",
-  "version": "0.4.7",
-  "description": "Generate reports from YAML files using wkhtmltopdf. based on invoice-compiler",
-  "main": "index.coffee",
+  "_args": [
+    [
+      "report-compiler",
+      ""
+    ]
+  ],
+  "_from": "report-compiler@*",
+  "_id": "report-compiler@0.5.0",
+  "_inCache": true,
+  "_location": "/report-compiler",
+  "_npmUser": {
+    "email": "nico_sap@hotmail.com",
+    "name": "nicojuicy"
+  },
+  "_npmVersion": "1.4.28",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "report-compiler",
+    "raw": "report-compiler",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/report-compiler/-/report-compiler-0.5.0.tgz",
+  "_shasum": "5123e882c9d8279655b28daac5ed8960f7d6d6dc",
+  "_shrinkwrap": null,
+  "_spec": "report-compiler",
+  "_where": "",
   "author": {
-    "name": "Nico Sap",
-    "email": "nico_sap@hotmail.com"
+    "email": "nico_sap@hotmail.com",
+    "name": "Nico Sap"
   },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/nicojuicy/report-compiler.git"
+  "bin": {
+    "report": "./bin/report"
   },
-  "homepage": "",
   "bugs": {
     "url": "https://github.com/NicoJuicy/report-compiler/issues"
-  },
-  "engines": {
-    "node": ">=0.10.0"
   },
   "dependencies": {
     "coffee-script": "^1.8.0",
@@ -29,23 +51,33 @@
     "numeraljs": "^1.5.6",
     "wkhtmltopdf": "^0.1.5"
   },
-  "bin": {
-    "report": "./bin/report"
+  "description": "Generate reports from YAML files using wkhtmltopdf. based on invoice-compiler",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "5123e882c9d8279655b28daac5ed8960f7d6d6dc",
+    "tarball": "http://registry.npmjs.org/report-compiler/-/report-compiler-0.5.0.tgz"
   },
-  "_id": "report-compiler@0.2.2",
-  "scripts": {},
-  "_from": "report-compiler@",
-  "_npmVersion": "2.0.0-alpha-5",
-  "_npmUser": {
-    "name": "NicoJuicy",
-    "email": "nico_sap@hotmail.com"
+  "engines": {
+    "node": ">=0.10.0"
   },
+  "gitHead": "a98b10b1f48a092e5fda5fe7f3db0652844b7686",
+  "homepage": "https://github.com/nicojuicy/report-compiler",
+  "installable": true,
+  "license": "MIT",
+  "main": "index.coffee",
   "maintainers": [
     {
       "name": "nicojuicy",
       "email": "nico_sap@hotmail.com"
     }
   ],
-  "directories": {},
-  "readme": "ERROR: No README data found!"
+  "name": "report-compiler",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nicojuicy/report-compiler.git"
+  },
+  "scripts": {},
+  "version": "0.5.1"
 }
