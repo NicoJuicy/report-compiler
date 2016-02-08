@@ -96,6 +96,7 @@ transformData = (data) ->
     item.tax_value = item.net_value * (item.tax_rate / 100)
     item.total_value = item.net_value * (1 + item.tax_rate / 100)
     item.net_value = roundCurrency(item.net_value)
+    item.tax_valueRaw = item.tax_value
     item.tax_value = roundCurrency(item.tax_value)
     item.total_value = roundCurrency(item.total_value)
     return item
@@ -107,7 +108,7 @@ transformData = (data) ->
     tax: _.map(_.groupBy(data.items, "tax_rate"), (tax_group, tax_rate) ->
         return {
           rate : tax_rate,
-          total : sum(_.pluck(tax_group, "tax_value"))
+          total : roundCurrency(sum(_.pluck(tax_group, "tax_valueRaw")))
         }
       ).filter((tax) -> tax.total != 0)
 
