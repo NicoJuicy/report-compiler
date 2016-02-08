@@ -34,13 +34,13 @@ sum = (items) ->
   items.reduce(((r, a) -> r + a), 0)
 
 calculateNet = (items) ->
-  return sum(_.pluck(items, "net_value"))
+  return roundCurrency(sum(_.pluck(items, "net_valueRaw")))
 
 calculateDiscount = (items) ->
   return sum(_.pluck(items, "net_discount"))
 
 calculateTotal = (items) ->
-  return sum(_.pluck(items, "total_value"))
+  return roundCurrency(sum(_.pluck(items, "total_valueRaw")))
 
 
 # Default language setting
@@ -101,6 +101,8 @@ transformData = (data) ->
     item.tax_value = item.net_value * (item.tax_rate / 100)
     item.tax_valueRaw = item.tax_value
     item.total_value = item.net_value * (1 + item.tax_rate / 100)
+    item.total_valueRaw = item.total_value
+    item.net_valueRaw = item.net_value
     item.net_value = roundCurrency(item.net_value)
     item.tax_value = roundCurrency(item.tax_value)
     item.total_value = roundCurrency(item.total_value)
