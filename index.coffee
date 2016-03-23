@@ -28,33 +28,19 @@ replaceExtname = (filename, newExtname) ->
 roundCurrency = (value) ->
   if isNaN(value)
     value = 0
-  return parseFloat(round(value,2).toFixed(2))
+  return parseFloat(value.toFixed(2))
 
-round = (value, exp) ->
-  if typeof exp == 'undefined' or +exp == 0
-    return Math.round(value)
-  value = +value
-  exp = +exp
-  if isNaN(value) or !(typeof exp == 'number' and exp % 1 == 0)
-    return NaN
-  # Shift
-  value = value.toString().split('e')
-  value = Math.round(+(value[0] + 'e' + (if value[1] then +value[1] + exp else exp)))
-  # Shift back
-  value = value.toString().split('e')
-  +(value[0] + 'e' + (if value[1] then +value[1] - exp else -exp))
-  
 sum = (items) ->
   items.reduce(((r, a) -> r + a), 0)
 
 calculateNet = (items) ->
-  return roundCurrency(sum(_.pluck(items, "net_valueRaw")))
+  return sum(_.pluck(items, "net_value"))
 
 calculateDiscount = (items) ->
   return sum(_.pluck(items, "net_discount"))
 
 calculateTotal = (items) ->
-  return roundCurrency(sum(_.pluck(items, "total_valueRaw")))
+  return sum(_.pluck(items, "total_value"))
 
 
 # Default language setting
@@ -89,6 +75,8 @@ transformData = (data) ->
       taxRate: 0
       discount_percentage : 0
       discountPercentage : 0
+      discountAmount : 0
+      discount_amount : 0
       type : 'd'
     )
 
@@ -103,6 +91,9 @@ transformData = (data) ->
     if not item.discountPercentage
       item.discountPercentage = 0
 
+    if not item.discountAmount
+      item.discountAmount = 0
+
     #if _.isString(item.quantity)
     #  item.quantity = (new Function("return #{item.quantity.replace(/\#/g, "//")};"))()
     
@@ -111,15 +102,13 @@ transformData = (data) ->
     #item.quantity = parseInt(item.quantity)
     #item.quantity = Math.ceil(item.quantity)
     item.net_discount = (item.quantity * item.price) * (item.discount_percentage / 100)
-    item.net_value = (item.quantity * item.price) * (1 - (item.discount_percentage / 100)) 
+    item.net_discount = item.net_discount + (item.quantity * item.discountAmount)
+    item.net_value = (item.quantity * item.price) * (1 - (item.discount_percentage / 100)) - (item.quantity * item.discountAmount)
     item.tax_value = item.net_value * (item.tax_rate / 100)
-    item.tax_valueRaw = item.tax_value
     item.total_value = item.net_value * (1 + item.tax_rate / 100)
-    item.total_valueRaw = item.total_value
-    item.net_valueRaw = item.net_value
-    item.net_value = roundCurrency(item.net_value)
-    item.tax_value = roundCurrency(item.tax_value)
-    item.total_value = roundCurrency(item.total_value)
+    #item.net_value = roundCurrency(item.net_value)
+    #item.tax_value = roundCurrency(item.tax_value)
+    #item.total_value = roundCurrency(item.total_value)
     return item
   )
 
@@ -130,7 +119,7 @@ transformData = (data) ->
     tax: _.map(_.groupBy(data.items, "tax_rate"), (tax_group, tax_rate) ->
         return {
           rate : tax_rate,
-          total : roundCurrency(sum(_.pluck(tax_group, "tax_valueRaw")))
+          total : sum(_.pluck(tax_group, "tax_value"))
         }
       ).filter((tax) -> tax.total != 0)
 
