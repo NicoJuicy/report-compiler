@@ -47,7 +47,7 @@
 29 silly publish   _inCache: true,
 29 silly publish   _location: '/report-compiler',
 29 silly publish   _npmUser: { email: 'nico_sap@hotmail.com', name: 'nicojuicy' },
-29 silly publish   _npmVersion: '1.4.29',
+29 silly publish   _npmVersion: '1.4.28',
 29 silly publish   _phantomChildren: {},
 29 silly publish   _requested:
 29 silly publish    { name: 'report-compiler',
@@ -58,7 +58,7 @@
 29 silly publish      type: 'range' },
 29 silly publish   _requiredBy: [ '#USER' ],
 29 silly publish   _resolved: 'https://registry.npmjs.org/report-compiler/-/report-compiler-0.5.0.tgz',
-29 silly publish   _shasum: 'ec6b1cf0ba6d3b15b24d16568c006f6a8f9b5b4a',
+29 silly publish   _shasum: '4199a4f494b667e52dfcfe4f3e4288ce974ca25b',
 29 silly publish   _shrinkwrap: null,
 29 silly publish   _spec: 'report-compiler',
 29 silly publish   _where: '',
@@ -98,25 +98,25 @@
 29 silly publish   readmeFilename: 'readme.md' }
 30 verbose request where is /report-compiler
 31 verbose request registry https://registry.npmjs.org/
-32 verbose request id 60e4ff55bc979196
+32 verbose request id d927c5bdafe4fa50
 33 verbose url raw /report-compiler
 34 verbose url resolving [ 'https://registry.npmjs.org/', './report-compiler' ]
 35 verbose url resolved https://registry.npmjs.org/report-compiler
 36 verbose request where is https://registry.npmjs.org/report-compiler
-37 info trying registry request attempt 1 at 09:35:17
+37 info trying registry request attempt 1 at 09:37:07
 38 http PUT https://registry.npmjs.org/report-compiler
 39 http 403 https://registry.npmjs.org/report-compiler
 40 verbose headers { 'content-type': 'application/json',
 40 verbose headers   'cache-control': 'max-age=300',
 40 verbose headers   'content-length': '95',
 40 verbose headers   'accept-ranges': 'bytes',
-40 verbose headers   date: 'Wed, 23 Mar 2016 08:35:18 GMT',
+40 verbose headers   date: 'Wed, 23 Mar 2016 08:37:08 GMT',
 40 verbose headers   via: '1.1 varnish',
 40 verbose headers   connection: 'keep-alive',
-40 verbose headers   'x-served-by': 'cache-ams4140-AMS',
+40 verbose headers   'x-served-by': 'cache-lcy1121-LCY',
 40 verbose headers   'x-cache': 'MISS',
 40 verbose headers   'x-cache-hits': '0',
-40 verbose headers   'x-timer': 'S1458722117.003393,VS0,VE1665' }
+40 verbose headers   'x-timer': 'S1458722227.037694,VS0,VE1494' }
 41 error publish Failed PUT 403
 42 error Error: "You cannot publish over the previously published version 0.5.3." : report-compiler
 42 error     at RegClient.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:308:14)
