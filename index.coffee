@@ -106,6 +106,7 @@ transformData = (data) ->
     item.net_value = (item.quantity * item.price) * (1 - (item.discount_percentage / 100)) - (item.quantity * item.discountAmount)
     item.tax_value = item.net_value * (item.tax_rate / 100)
     item.total_value = item.net_value * (1 + item.tax_rate / 100)
+    item.priceIncl = item.total_value / item.quantity
     #item.net_value = roundCurrency(item.net_value)
     #item.tax_value = roundCurrency(item.tax_value)
     #item.total_value = roundCurrency(item.total_value)
