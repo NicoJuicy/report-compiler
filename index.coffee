@@ -39,6 +39,9 @@ calculateNet = (items) ->
 calculateDiscount = (items) ->
   return sum(_.pluck(items, "net_discount"))
 
+calculateDiscountIncl = (items) ->
+  return sum(_.pluck(items, "discountIncl"))
+
 calculateTotal = (items) ->
   return sum(_.pluck(items, "total_value"))
 
@@ -77,6 +80,8 @@ transformData = (data) ->
       discountPercentage : 0
       discountAmount : 0
       discount_amount : 0
+      discountAmountIncl : 0
+      discount_amountIncl: 0
       type : 'd'
     )
 
@@ -94,6 +99,9 @@ transformData = (data) ->
     if not item.discountAmount
       item.discountAmount = 0
 
+    if not item.discountAmountIncl
+      item.discountAmountIncl = 0
+
     #if _.isString(item.quantity)
     #  item.quantity = (new Function("return #{item.quantity.replace(/\#/g, "//")};"))()
     
@@ -103,7 +111,9 @@ transformData = (data) ->
     #item.quantity = Math.ceil(item.quantity)
     item.net_discount = (item.quantity * item.price) * (item.discount_percentage / 100)
     item.net_discount = item.net_discount + (item.quantity * item.discountAmount)
-    item.net_value = (item.quantity * item.price) * (1 - (item.discount_percentage / 100)) - (item.quantity * item.discountAmount)
+    item.net_discount = item.net_discount + (item.quantity * (item.discountAmountIncl / (1 + (item.tax_rate / 100))))
+    item.discountIncl = item.net_discount * (1 + item.tax_rate / 100)
+    item.net_value = (item.quantity * item.price) * (1 - (item.discount_percentage / 100)) - (item.quantity * item.discountAmount) - (item.quantity * (item.discountAmountIncl / (1 + (item.tax_rate / 100))))
     item.tax_value = item.net_value * (item.tax_rate / 100)
     item.total_value = item.net_value * (1 + item.tax_rate / 100)
     item.priceIncl = item.total_value / item.quantity
@@ -116,6 +126,7 @@ transformData = (data) ->
   data.totals =
     net: calculateNet(data.items)
     discount : calculateDiscount(data.items)
+    discountIncl : calculateDiscountIncl(data.items)
     total: calculateTotal(data.items)
     tax: _.map(_.groupBy(data.items, "tax_rate"), (tax_group, tax_rate) ->
         return {
