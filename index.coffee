@@ -113,10 +113,10 @@ transformData = (data) ->
     item.net_discount = item.net_discount + (item.quantity * item.discountAmount)
     item.net_discount = item.net_discount + (item.quantity * (item.discountAmountIncl / (1 + (item.tax_rate / 100))))
     item.discountIncl = item.net_discount * (1 + item.tax_rate / 100)
-    item.net_value = (item.quantity * item.price) * (1 - (item.discount_percentage / 100)) - (item.quantity * (item.discountAmountIncl / (1 + (item.tax_rate / 100)))) #(item.quantity * item.discountAmount) -
+    item.net_value = (item.quantity * item.price) * (1 - (item.discount_percentage / 100)) - (item.quantity * item.discountAmount) - (item.quantity * (item.discountAmountIncl / (1 + (item.tax_rate / 100))))
     item.tax_value = item.net_value * (item.tax_rate / 100)
     item.total_value = item.net_value * (1 + item.tax_rate / 100)
-    item.priceIncl = item.total_value / item.quantity
+    item.priceIncl = (item.total_value + item.discountIncl) / item.quantity
     #item.net_value = roundCurrency(item.net_value)
     #item.tax_value = roundCurrency(item.tax_value)
     #item.total_value = roundCurrency(item.total_value)
@@ -158,7 +158,7 @@ handlebars.registerHelper("plusOne", (value) ->
   return value + 1
 )
 handlebars.registerHelper("number", (value) ->
-  return numeral(value).format("0[.]0")
+  return numeral(value).format("0[.]0[00]")
 )
 handlebars.registerHelper("money", (value) ->
   return "#{numeral(value).format("0,0.00")} #{data.order.currency}"
