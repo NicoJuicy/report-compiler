@@ -124,16 +124,16 @@ transformData = (data) ->
   )
 
   data.totals =
-    net: calculateNet(data.items)
+    net: data.order.totalNet
     discount : calculateDiscount(data.items)
     discountIncl : calculateDiscountIncl(data.items)
-    total: calculateTotal(data.items)
-    tax: _.map(_.groupBy(data.items, "tax_rate"), (tax_group, tax_rate) ->
+    total: data.order.totalIncl
+    tax: data.order.totalTax.map((tx) ->
         return {
-          rate : tax_rate,
-          total : sum(_.pluck(tax_group, "tax_value"))
+          rate : tx.tax,
+          total : tx.value
         }
-      ).filter((tax) -> tax.total != 0)
+      )
 
   data
 
@@ -169,7 +169,7 @@ handlebars.registerHelper("moneyRound", (value) ->
 )
 
 handlebars.registerHelper("percent", (value) ->
-  return numeral(value/100).format("0.00 %")
+  return numeral(value / 100).format("0.00 %")
 )
 handlebars.registerHelper("fullPercent", (value) ->
   return numeral(value / 100).format("0 %")
