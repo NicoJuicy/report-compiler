@@ -6,7 +6,7 @@
     ]
   ],
   "_from": "report-compiler@*",
-  "_id": "report-compiler@0.5.8",
+  "_id": "report-compiler@0.6.1",
   "_inCache": true,
   "_location": "/report-compiler",
   "_npmUser": {
@@ -79,5 +79,5 @@
     "url": "git://github.com/nicojuicy/report-compiler.git"
   },
   "scripts": {},
-  "version": "0.6.0"
+  "version": "0.6.1"
 }

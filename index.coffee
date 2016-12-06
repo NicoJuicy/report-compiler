@@ -69,6 +69,9 @@ transformData = (data) ->
   data.order.template ?= "default"
   data.order.location ?= data.sender.town
   data.order.currency ?= "€"
+  data.order.totalNet ?= 0
+  data.order.totalIncl ?= 0
+  data.order.totalTax ?= []
 
   data.items = data.items.map((item) ->
 
@@ -169,7 +172,7 @@ handlebars.registerHelper("moneyRound", (value) ->
 )
 
 handlebars.registerHelper("percent", (value) ->
-  return numeral(value / 100).format("0.00 %")
+  return numeral(value/100).format("0.00 %")
 )
 handlebars.registerHelper("fullPercent", (value) ->
   return numeral(value / 100).format("0 %")
