@@ -189,10 +189,9 @@ handlebars.registerHelper("lines", (options) ->
   return contents
 )
 handlebars.registerHelper("pre", (contents) ->
-  if not contents == null
-    return new handlebars.SafeString(contents.split(/\n/).map((a) -> handlebars.Utils.escapeExpression(a)).join("<br>"))
-  else
-    return ''
+  console.log(typeof(contents) + ' ' + contents )
+  return new handlebars.SafeString(contents.split(/\n/).map((a) -> handlebars.Utils.escapeExpression(a)).join("<br>"))
+  
 )
 handlebars.registerHelper("t", (phrase) ->
   return translation[phrase] ? phrase
