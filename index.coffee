@@ -19,7 +19,7 @@ setLanguage = (lang) ->
     numeral.language(lang, require("numeraljs/languages/#{lang}"))
   catch e
   numeral.language(lang)
-  translation = require(path.join(data.meta.destination.assetsFolder, "languages", "#{lang}.json"))
+  translation = require(path.join(data.meta.destination.assetsFolder,"languages","#{lang}.json"))
   #translation = require("./languages/#{lang}.json")
 
 replaceExtname = (filename, newExtname) ->
@@ -71,6 +71,7 @@ transformData = (data) ->
   data.order.currency ?= "€"
   data.order.totalNet ?= 0
   data.order.totalIncl ?= 0
+  data.order.totalByPercentage ?= []
   data.order.totalTax ?= []
 
   data.items = data.items.map((item) ->
@@ -79,13 +80,13 @@ transformData = (data) ->
       quantity: 1
       tax_rate: 0
       taxRate: 0
-      discount_percentage: 0
-      discountPercentage: 0
-      discountAmount: 0
-      discount_amount: 0
-      discountAmountIncl: 0
+      discount_percentage : 0
+      discountPercentage : 0
+      discountAmount : 0
+      discount_amount : 0
+      discountAmountIncl : 0
       discount_amountIncl: 0
-      type: 'd'
+      type : 'd'
     )
 
     if not item.title?
@@ -128,13 +129,19 @@ transformData = (data) ->
 
   data.totals =
     net: data.order.totalNet
-    discount: calculateDiscount(data.items)
-    discountIncl: calculateDiscountIncl( data.items )
+    discount : calculateDiscount(data.items)
+    discountIncl : calculateDiscountIncl(data.items)
     total: data.order.totalIncl
+    netByPercentage: data.order.totalByPercentage.map((tx) ->
+        return {
+          rate : tx.tax,
+          total : tx.value
+        }
+      )
     tax: data.order.totalTax.map((tx) ->
         return {
-          rate: tx.tax,
-          total: tx.value
+          rate : tx.tax,
+          total : tx.value
         }
       )
 
@@ -157,7 +164,7 @@ templateFolder = data.meta.template.folder
 tmpFilename = "#{templateFolder}/#{"xxxx-xxxx-xxxx".replace(/x/g, -> ((Math.random() * 16) | 0).toString(16))}.html"
 
 # Prepare rendering
-handlebars.registerHelper("plusOne", (value) ->
+handlebars.registerHelper("plusOne", (value) -> 
   return value + 1
 )
 handlebars.registerHelper("number", (value) ->
@@ -172,7 +179,7 @@ handlebars.registerHelper("moneyRound", (value) ->
 )
 
 handlebars.registerHelper("percent", (value) ->
-  return numeral( value / 100 ).format("0.00 %")
+  return numeral(value/100).format("0.00 %")
 )
 handlebars.registerHelper("fullPercent", (value) ->
   return numeral(value / 100).format("0 %")
@@ -189,33 +196,31 @@ handlebars.registerHelper("lines", (options) ->
   return contents
 )
 handlebars.registerHelper("pre", (contents) ->
-  console.log(typeof(contents) + ' ' + contents )
   return new handlebars.SafeString(contents.split(/\n/).map((a) -> handlebars.Utils.escapeExpression(a)).join("<br>"))
-  
 )
 handlebars.registerHelper("t", (phrase) ->
   return translation[phrase] ? phrase
 )
 
 # Rendering
-args = {
+args ={
   output: "#{data.meta.destination.pdf}",
   marginLeft: "0mm",
   marginRight: "0mm",
 }
 #-- Header
 
-if !!data.meta.destination.header
+if !!data.meta.destination.header 
   args.headerHtml = "file:///#{data.meta.destination.header}"
-  template = handlebars.compile(fs.readFileSync("#{data.meta.template.header}", "utf8"))
+  template = handlebars.compile(fs.readFileSync("#{data.meta.template.header}", "utf8")) 
   fs.writeFileSync(data.meta.destination.header, template(data), "utf8")
 # -- Footer
 if !!data.meta.destination.footer
   args.footerHtml = "file:///#{data.meta.destination.footer}"
-  template = handlebars.compile(fs.readFileSync("#{data.meta.template.footer}", "utf8"))
+  template = handlebars.compile(fs.readFileSync("#{data.meta.template.footer}", "utf8")) 
   fs.writeFileSync(data.meta.destination.footer, template(data), "utf8")
 #-- Body
-template = handlebars.compile(fs.readFileSync("#{data.meta.template.body}", "utf8"))
+template = handlebars.compile(fs.readFileSync("#{data.meta.template.body}", "utf8")) 
 fs.writeFileSync(data.meta.destination.body, template(data), "utf8")
 
   
