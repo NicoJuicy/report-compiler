@@ -188,6 +188,11 @@ handlebars.registerHelper("fullPercent", (value) ->
 handlebars.registerHelper("date", (value) ->
   return moment(value).format("LL")
 )
+
+handlebars.registerHelper("shortdate", (value) ->
+  return moment(value).format("DD/MM/YY")
+)
+
 handlebars.registerHelper("lines", (options) ->
   contents = options.fn()
   contents = contents.split(/<br\s*\/?>/)
