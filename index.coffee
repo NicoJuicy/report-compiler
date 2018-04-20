@@ -171,6 +171,8 @@ handlebars.registerHelper("number", (value) ->
   return numeral(value).format("0[.]0[00]")
 )
 handlebars.registerHelper("money", (value) ->
+  if isNaN(value) 
+    value = 0.0
   return "#{numeral(value).format("0,0.00")} #{data.order.currency}"
 )
 
