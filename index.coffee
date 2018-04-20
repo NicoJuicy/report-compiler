@@ -77,7 +77,7 @@ transformData = (data) ->
   data.items = data.items.map((item) ->
 
     item = _.defaults(item,
-      quantity: 1
+      quantity: 0
       tax_rate: 0
       taxRate: 0
       discount_percentage : 0
